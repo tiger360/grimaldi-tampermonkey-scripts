@@ -8,16 +8,16 @@
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
 // @require      https://cdn.tailwindcss.com
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/common/config.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/common/notifications.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/common/domHelpers.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/common/iframeHelpers.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/common/uiHelpers.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/constants.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/clipboard.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/voyage.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/replacerDom.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/replacerUi.js
-// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/refs/heads/master/src/shipper-replacer/main.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/common/config.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/common/notifications.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/common/domHelpers.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/common/iframeHelpers.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/common/uiHelpers.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/constants.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/clipboard.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/voyage.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/replacerDom.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/replacerUi.js
+// @require      https://raw.githubusercontent.com/tiger360/grimaldi-tampermonkey-scripts/master/src/shipper-replacer/main.js
 // @run-at       document-end
 // ==/UserScript==
