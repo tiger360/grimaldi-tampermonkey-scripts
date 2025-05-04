@@ -1,14 +1,16 @@
 // src/vehicle-handler/vehicleUi.js
 
-// Ensure global namespace
-window.VH = window.VH || {};
+(function() {
+  'use strict';
 
-const { vehicleConfig: CONFIG, vehicleMessages: MESSAGES } = VH;
-const { show }       = VH.notifications;
-const { injectStyles, addTooltip } = VH.ui;
-const { vehiclesFromClipboard } = VH.vehicleMain;
+  // Ensure global namespace
+  window.VH = window.VH || {};
 
-VH.vehicleUi = {
+  const { vehicleConfig: CONFIG, vehicleMessages: MESSAGES, notifications, ui, utils, vehicleMain } = VH;
+  const { show }       = notifications;
+  const { injectStyles, addTooltip } = ui;
+
+  VH.vehicleUi = {
   /**
    * Create the floating panel with all controls.
    */
@@ -26,6 +28,15 @@ VH.vehicleUi = {
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         z-index: 10000;
       }
+      .loading-overlay { /* Added definition */
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(255,255,255,0.7); display: none; /* Hidden by default */
+        justify-content: center; align-items: center; z-index: 10005;
+      }
+      .loading-spinner { /* Basic spinner */
+        border: 4px solid #f3f3f3; border-top: 4px solid #3498db;
+        border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;
+      }
       .vehicle-handler-panel button {
         width: 100%;
         margin: 5px 0;
@@ -35,6 +46,9 @@ VH.vehicleUi = {
         cursor: pointer;
       }
       .vehicle-handler-panel button:hover { opacity: 0.9; }
+      @keyframes spin {
+        0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }
+      }
     `);
 
     // Create loading overlay
@@ -70,9 +84,9 @@ VH.vehicleUi = {
       });
     document.getElementById('toggleDebugBtn')
       .addEventListener('click', e => {
-        e.preventDefault();
-        VH.utils.DEBUG.enabled = !VH.utils.DEBUG.enabled;
-        e.target.textContent = VH.utils.DEBUG.enabled ? 'Disable Debug' : 'Enable Debug';
+        e.preventDefault(); // Prevent default link behavior
+        utils.DEBUG.enabled = !utils.DEBUG.enabled;
+        e.target.textContent = utils.DEBUG.enabled ? 'Disable Debug' : 'Enable Debug';
         show(`Debug ${VH.utils.DEBUG.enabled ? 'enabled' : 'disabled'}`, 'info');
       });
 
@@ -100,7 +114,7 @@ VH.vehicleUi = {
    * Show a full‐screen modal preview of the loaded vehicles.
    */
   showVehiclePreview() {
-    if (!vehiclesFromClipboard || vehiclesFromClipboard.length === 0) {
+    if (!vehicleMain.vehiclesFromClipboard || vehicleMain.vehiclesFromClipboard.length === 0) {
       show(MESSAGES.noVehiclesToPreview, 'error');
       return;
     }
@@ -145,7 +159,7 @@ VH.vehicleUi = {
     document.body.appendChild(backdrop);
 
     // Write preview HTML into the iframe
-    const previewHtml = this.generateVehiclePreviewHtml(vehiclesFromClipboard);
+    const previewHtml = this.generateVehiclePreviewHtml(vehicleMain.vehiclesFromClipboard);
     iframe.onload = () => {
       const doc = iframe.contentDocument || iframe.contentWindow.document;
       doc.open();
@@ -160,7 +174,7 @@ VH.vehicleUi = {
     });
     document.getElementById('confirmVehiclesBtn').addEventListener('click', () => {
       backdrop.remove();
-      VH.vehicleMain.processVehicleAddition();
+      vehicleMain.processVehicleAddition();
     });
   },
 
@@ -729,4 +743,6 @@ VH.vehicleUi = {
       <strong>Attachments Skipped:</strong> ${summary.skippedAttachments.join(', ') || 'None'}
     `;
   }
-};
+  };
+
+})();
